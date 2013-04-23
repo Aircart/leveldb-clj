@@ -26,9 +26,9 @@
         dbfile (io/file path)
         factory (JniDBFactory.)]
     (.open factory dbfile opts)))
-  
 
-(defn put 
+
+(defn put
   [db key value]
   (.put db key value))
 
@@ -39,3 +39,34 @@
 (defn delete
   [db key]
   (.delete db key))
+
+(defn create-write-batch
+  "returns a WriteBatch object"
+  [db]
+  (.createWriteBatch db))
+
+(defn batch-put
+  [batch key value]
+  (.put batch key value))
+
+(defn batch-delete
+  [batch key]
+  (.delete batch key))
+
+(defn write-batch
+  [db batch]
+  (.write db batch))
+
+(defmacro with-batch
+  [bindings & body]
+  {:pre [(vector? bindings)
+         (even? (count bindings))]}
+  (cond
+   (= (count bindings) 0) `(do ~@body)
+   (symbol? (bindings 0)) `(let ~(subvec bindings 0 2)
+                             (try
+                               (println ~(subvec bindings 2) ~@body)
+                               (finally
+                                 (.close ~(bindings 0)))))
+   :else (throw (IllegalArgumentException.
+                 "Bindings must be symbols."))))
