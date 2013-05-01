@@ -5,7 +5,7 @@
 (deftest test-basic-operations
   (testing "with good data"
     (testing "put and get"
-      (db/with-db [test (db/open "/tmp/tests")]
+      (with-open [test (db/open "/tmp/tests")]
         (db/put test (.getBytes "testKey1") (.getBytes "testValue1"))
         (is (= "testValue1" (String. (db/get test (.getBytes "testKey1")))))))
     (testing "delete"
@@ -18,7 +18,7 @@
 
 (deftest test-batch2
         (testing "better version" 
-                 (db/with-db [test (db/open "/tmp/tests")
+                 (with-open [test (db/open "/tmp/tests")
                               test-batch (db/create-write-batch test)]
                              (db/batch-put test-batch (.getBytes "batchKey1") (.getBytes "batchValue1"))
                              (db/batch-put test-batch (.getBytes "batchKey2") (.getBytes "batchValue2"))
