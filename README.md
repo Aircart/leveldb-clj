@@ -1,13 +1,13 @@
 # leveldb-clj
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure wrapper around the Java API for LevelDB.
 
 ## Usage
 
-FIXME
+    :dependencies [[org.clojure/leveldb-clj "0.1.0"]]
 
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013 Seth Edwards
 
 Distributed under the Eclipse Public License, the same as Clojure.
