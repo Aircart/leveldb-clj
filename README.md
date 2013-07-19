@@ -4,7 +4,7 @@ A Clojure wrapper around the Java API for LevelDB.
 
 ## Usage
 
-    :dependencies [[org.clojure/leveldb-clj "0.1.0"]]
+    :dependencies [[org.clojars.aircart/leveldb-clj "0.1.0"]]
 
 ## License
 
