@@ -1,6 +1,6 @@
 (ns leveldb-clj.core-test
-  (:use clojure.test
-        [leveldb-clj.core :as db]))
+  (:use clojure.test)
+  (:require [leveldb-clj.core :as db]))
 
 (deftest test-basic-operations
   (testing "with good data"

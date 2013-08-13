@@ -1,7 +1,8 @@
 (ns leveldb-clj.core
   (:require [clojure.java.io :as io])
   (:import (org.iq80.leveldb Options DB))
-  (:import org.fusesource.leveldbjni.JniDBFactory))
+  (:import org.fusesource.leveldbjni.JniDBFactory)
+  (:refer-clojure :exclude [get]))
 
 
 
